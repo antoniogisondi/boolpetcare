@@ -13,7 +13,7 @@ class UpdatePetRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,17 @@ class UpdatePetRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|max:50',
+            'species' => 'required|max:50',
+            'date_born' => 'required',
+            'genre' => 'required|max:100',
+            'owner' => 'required|max:50',
+        ];
+    }
+    public function messages(){
+        return[
+            'required'  => 'Il campo :attribute è obbligatorio.',
+            'max'       => 'Il campo :attribute non può superare :max caratteri.'
         ];
     }
 }
