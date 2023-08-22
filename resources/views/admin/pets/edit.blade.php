@@ -18,7 +18,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action=" {{ route('admin.pets.update', $pets->id) }} " method="POST">
+                    <form action=" {{ route('admin.pets.update', $pet->id) }} " method="POST">
                         @csrf
                         @method('PUT')
                         <form action=" {{ route('admin.pets.store') }} " method="POST">

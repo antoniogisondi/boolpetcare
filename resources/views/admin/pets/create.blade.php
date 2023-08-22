@@ -5,8 +5,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>Insert a new posts</h2>
-                    <a href=" {{ route('admin.pets.index')}} " class="btn btn-secondary btn-sm">Posts</a>
+                    <h2>Insert a new pets</h2>
+                    <a href=" {{ route('admin.pets.index')}} " class="btn btn-secondary btn-sm">Pets</a>
                 </div>
                 <div>
                     @if($errors->any())
@@ -36,7 +36,7 @@
                         </div>
                         <div class="class-group">
                             <label class="control-label">Date born</label>
-                            <input type="text" id="date_born" name="date_born" class="form-control @error('date_born')is-invalid @enderror" placeholder="Date born" value="{{ old('date_born') }}">
+                            <input type="date" id="date_born" name="date_born" class="form-control @error('date_born')is-invalid @enderror" placeholder="Date born" value="{{ old('date_born') }}">
                             @error('date_born')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
