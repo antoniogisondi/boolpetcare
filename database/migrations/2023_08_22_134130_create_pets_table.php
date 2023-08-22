@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 50);
+            $table->string('species', 50);
+            $table->date('date_born');
+            $table->string('genre', 100);
+            $table->string('owner', 50);
+            $table->text('notes', 500)->nullable();
             $table->timestamps();
         });
     }
