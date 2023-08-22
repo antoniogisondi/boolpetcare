@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Pet;
 use App\Http\Requests\StorePetRequest;
 use App\Http\Requests\UpdatePetRequest;
@@ -81,6 +82,7 @@ class PetController extends Controller
      */
     public function destroy(Pet $pet)
     {
-        //
+        $pet->delete();
+        return redirect()->route('admin.pets.index');
     }
 }
