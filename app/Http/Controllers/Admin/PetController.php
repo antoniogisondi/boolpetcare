@@ -15,7 +15,9 @@ class PetController extends Controller
      */
     public function index()
     {
-        //
+        $pets = Pet::all();
+
+        return view('admin.pets.index', compact('pets'));
     }
 
     /**
@@ -47,7 +49,7 @@ class PetController extends Controller
      */
     public function show(Pet $pet)
     {
-        //
+        return view('admin.pets.show', compact('pet'));
     }
 
     /**
