@@ -15,9 +15,13 @@ class PetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pets = Pet::all();
+        $keyword = $request->input('keyword');
+
+        $pets = Pet::when($keyword, function ($query, $keyword) {
+        return $query->where('name', 'like', "%$keyword%")->orWhere('species', 'like', "%$keyword%")->orWhere('date_born', 'like', "%$keyword%");
+        })->get();
 
         return view('admin.pets.index', compact('pets'));
     }
