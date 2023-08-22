@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pet;
 use App\Http\Requests\StorePetRequest;
 use App\Http\Requests\UpdatePetRequest;
+use Illuminate\Http\Request;
 
 class PetController extends Controller
 {
@@ -36,7 +37,16 @@ class PetController extends Controller
      */
     public function store(StorePetRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $pets = new Pet();
+
+        $pets->fill($form_data);
+
+        $pets->save();
+
+        $message = 'Creazione animale completata';
+        return redirect()->route('admin.project.index', ['message' => $message]);
     }
 
     /**
@@ -70,7 +80,12 @@ class PetController extends Controller
      */
     public function update(UpdatePetRequest $request, Pet $pet)
     {
-        //
+        $form_data = $request->all();
+
+        $pets->update($form_data);
+
+        $message = 'Aggiornamento animale completato';
+        return redirect()->route('admin.project.index', ['message' => $message]);
     }
 
     /**
