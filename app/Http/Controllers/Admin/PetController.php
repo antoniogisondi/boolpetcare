@@ -47,7 +47,7 @@ class PetController extends Controller
         $pets->save();
 
         $message = 'Creazione animale completata';
-        return redirect()->route('admin.project.index', ['message' => $message]);
+        return redirect()->route('admin.pets.index', ['message' => $message]);
     }
 
     /**
@@ -86,7 +86,7 @@ class PetController extends Controller
         $pets->update($form_data);
 
         $message = 'Aggiornamento animale completato';
-        return redirect()->route('admin.project.index', ['message' => $message]);
+        return redirect()->route('admin.pets.index', ['message' => $message]);
     }
 
     /**
