@@ -4,17 +4,18 @@
 
 <div class="container">
 <div class="col-12 col-sm-6 col-md-3 my-5">
-  <form action="{{ route('admin.pets.index') }}" method="GET">
-    @csrf
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" name="keyword" placeholder="Cerca per nome, specie, età...">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit">Cerca</button>
-        </div>
-    </div>
-  </form>
   <a href="{{route('admin.pets.create')}}" class="btn btn-primary">Aggiungi animale</a>
 </div>
+<form action="{{ route('admin.pets.index') }}" method="GET">
+  @csrf
+  <div class="input-group mb-3">
+      <input type="text" class="form-control" name="keyword" placeholder="Cerca per nome">
+      <input type="text" class="form-control mx-3" name="species" placeholder="Cerca per specie">
+      <div class="input-group-append">
+          <button class="btn btn-outline-secondary mx-3" type="submit">Cerca</button>
+      </div>
+  </div>
+</form>
 
     <table class="table table-dark table-striped">
         <thead>
