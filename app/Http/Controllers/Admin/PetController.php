@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Pet;
 use App\Http\Requests\StorePetRequest;
 use App\Http\Requests\UpdatePetRequest;
+use Illuminate\Http\Request;
 
 class PetController extends Controller
 {
@@ -15,7 +17,9 @@ class PetController extends Controller
      */
     public function index()
     {
-        //
+        $pets = Pet::all();
+
+        return view('admin.pets.index', compact('pets'));
     }
 
     /**
@@ -36,7 +40,16 @@ class PetController extends Controller
      */
     public function store(StorePetRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $pets = new Pet();
+
+        $pets->fill($form_data);
+
+        $pets->save();
+
+        $message = 'Creazione animale completata';
+        return redirect()->route('admin.pets.index', ['message' => $message]);
     }
 
     /**
@@ -47,7 +60,7 @@ class PetController extends Controller
      */
     public function show(Pet $pet)
     {
-        //
+        return view('admin.pets.show', compact('pet'));
     }
 
     /**
@@ -70,7 +83,12 @@ class PetController extends Controller
      */
     public function update(UpdatePetRequest $request, Pet $pet)
     {
-        //
+        $form_data = $request->all();
+
+        $pets->update($form_data);
+
+        $message = 'Aggiornamento animale completato';
+        return redirect()->route('admin.pets.index', ['message' => $message]);
     }
 
     /**
@@ -81,6 +99,7 @@ class PetController extends Controller
      */
     public function destroy(Pet $pet)
     {
-        //
+        $pet->delete();
+        return redirect()->route('admin.pets.index');
     }
 }
