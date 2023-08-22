@@ -15,22 +15,21 @@
             <th scope="col">Specie</th>
             <th scope="col">Nato</th>
             <th scope="col">Proprietario</th>
-            <th scope="col">Note</th>
-            <th scope="col">Modifica/Elimina</th>
+            <th scope="col">Visualizza/Modifica/Elimina</th>
           </tr>
         </thead>
         <tbody>
             @foreach($pets as $pet)
           <tr >
             <th scope="row">{{$pet->id}}</th>
-            <td>{{$pet->nome}}</td>
+            <td>{{$pet->name}}</td>
             <td>{{$pet->species}}</td>
             <td>{{$pet->date_born}}</td>
             <td>{{$pet->owner}}</td>
-            <td><a href="{{route('admin.pets.show', $pet->id)}}"><i class="fa-solid fa-eye"></i></a></td>
             <td>
-              <div class="d-flex">
-                  <a href="{{route('admin.pets.edit', $pet->id)}}"><i class="fa-solid fa-pen-to-square text-warning"></i></a>
+              <div class="d-flex align-items-center">
+                  <a href="{{route('admin.pets.show', $pet->id)}}"><i class="fa-solid fa-eye"></i></a>
+                  <a href="{{route('admin.pets.edit', $pet->id)}}" class="mx-3"><i class="fa-solid fa-pen-to-square text-warning"></i></a>
                   <form action="{{route('admin.pets.destroy', $pet->id)}}" method="POST" onsubmit="return confirm('Sei sicuro di voler cancellare ?!?!?!?')">
                       @csrf
                       @method('DELETE')
@@ -44,7 +43,6 @@
         </tbody>
         @endforeach
       </table>
-
 </div>
 
 @endsection

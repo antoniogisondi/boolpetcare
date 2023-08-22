@@ -85,7 +85,7 @@ class PetController extends Controller
     {
         $form_data = $request->all();
 
-        $pets->update($form_data);
+        $pet->update($form_data);
 
         $message = 'Aggiornamento animale completato';
         return redirect()->route('admin.pets.index', ['message' => $message]);
