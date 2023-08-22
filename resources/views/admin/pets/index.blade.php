@@ -36,7 +36,7 @@
             <td>{{$pet->date_born}}</td>
             <td>{{$pet->owner}}</td>
             <td>
-              <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center justify-content-between my-content">
                   <a href="{{route('admin.pets.show', $pet->id)}}"><i class="fa-solid fa-eye"></i></a>
                   <a href="{{route('admin.pets.edit', $pet->id)}}" class="mx-3"><i class="fa-solid fa-pen-to-square text-warning"></i></a>
                   <form class="form-delete" action="{{route('admin.pets.destroy', $pet->id)}}" method="POST">
