@@ -30,7 +30,7 @@
               <div class="d-flex align-items-center">
                   <a href="{{route('admin.pets.show', $pet->id)}}"><i class="fa-solid fa-eye"></i></a>
                   <a href="{{route('admin.pets.edit', $pet->id)}}" class="mx-3"><i class="fa-solid fa-pen-to-square text-warning"></i></a>
-                  <form action="{{route('admin.pets.destroy', $pet->id)}}" method="POST" onsubmit="return confirm('Sei sicuro di voler cancellare ?!?!?!?')">
+                  <form class="form-delete" action="{{route('admin.pets.destroy', $pet->id)}}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="btn text-danger">
@@ -44,5 +44,5 @@
         @endforeach
       </table>
 </div>
-
+@include('admin.partials.modal_delete')
 @endsection
