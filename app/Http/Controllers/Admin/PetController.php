@@ -29,7 +29,7 @@ class PetController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pets.create');
     }
 
     /**
@@ -71,7 +71,7 @@ class PetController extends Controller
      */
     public function edit(Pet $pet)
     {
-        //
+        return view('admin.pets.edit', compact('pet'));
     }
 
     /**
