@@ -18,12 +18,21 @@ class PetController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->input('keyword');
+        $species = $request->input('species');
 
-        $pets = Pet::when($keyword, function ($query, $keyword) {
-        return $query->where('name', 'like', "%$keyword%")->orWhere('species', 'like', "%$keyword%")->orWhere('date_born', 'like', "%$keyword%");
-        })->get();
+        $petsQuery = Pet::query();
 
-        return view('admin.pets.index', compact('pets'));
+    if($keyword){
+        $petsQuery->where('name', 'like', "%$keyword%");
+    }
+
+    if($species){
+        $petsQuery->Where('species', 'like', "%$species%");
+    }
+
+    $pets = $petsQuery->get();
+
+    return view('admin.pets.index', compact('pets'));
     }
 
     /**
