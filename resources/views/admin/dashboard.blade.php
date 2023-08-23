@@ -16,8 +16,9 @@
                         {{ session('status') }}
                     </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
+                    <div class="link">
+                        <a class="btn btn-primary" href="{{ route('admin.pets.index') }}">Gli animali della nostra clinica</a>
+                    </div>
                 </div>
             </div>
         </div>
