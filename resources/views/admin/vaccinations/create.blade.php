@@ -6,8 +6,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>Insert a new pets</h2>
-                    <a href=" {{ route('admin.pets.index')}} " class="btn btn-secondary btn-sm">Pets</a>
+                    <h2>Insert a new vaccination</h2>
+                    <a href=" {{ route('admin.vaccination.index')}} " class="btn btn-secondary btn-sm">Vaccination</a>
                 </div>
                 <div>
                     @if($errors->any())
@@ -19,40 +19,26 @@
                             </ul>
                         </div>
                     @endif
-                    <form action=" {{ route('admin.pets.store') }} " method="POST">
+                    <form action=" {{ route('admin.vaccination.store') }} " method="POST">
                         @csrf
                         <div class="class-group">
                             <label class="control-label">Name</label>
-                            <input type="text" id="name" name="name" class="form-control @error('name')is-invalid @enderror" placeholder="Name" value="{{ old('name') }}">
-                            @error('name')
+                            <input type="text" id="vaccine_name" name="vaccine_name" class="form-control @error('vaccine_name')is-invalid @enderror" placeholder="Name vaccination" value="{{ old('vaccine_name') }}">
+                            @error('vaccine_name')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
                         <div class="class-group">
-                            <label class="control-label">Species</label>
-                            <input type="text" id="species" name="species" class="form-control @error('species')is-invalid @enderror" placeholder="Species" value="{{ old('species') }}">
-                            @error('name')
+                            <label class="control-label">Dosage</label>
+                            <input type="text" id="dosage" name="dosage" class="form-control @error('dosage')is-invalid @enderror" placeholder="dosage" value="{{ old('dosage') }}">
+                            @error('dosage')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
                         <div class="class-group">
-                            <label class="control-label">Date born</label>
-                            <input type="date" id="date_born" name="date_born" class="form-control @error('date_born')is-invalid @enderror" placeholder="Date born" value="{{ old('date_born') }}">
-                            @error('date_born')
-                                <div class="text-danger"> {{ $message }} </div>
-                            @enderror
-                        </div>
-                        <div class="class-group">
-                            <label class="control-label">Genere</label>
-                            <input type="text" id="genre" name="genre" class="form-control @error('genre')is-invalid @enderror" placeholder="Genere" value="{{ old('genre') }}">
-                            @error('genre')
-                                <div class="text-danger"> {{ $message }} </div>
-                            @enderror
-                        </div>
-                        <div class="class-group">
-                            <label class="control-label">Owner</label>
-                            <input type="text" id="owner" name="owner" class="form-control @error('owner')is-invalid @enderror" placeholder="Owner" value="{{ old('owner') }}">
-                            @error('owner')
+                            <label class="control-label">Date</label>
+                            <input type="date" id="vaccination_date" name="vaccination_date" class="form-control @error('vaccination_date')is-invalid @enderror" placeholder="Date" value="{{ old('vaccination_date') }}">
+                            @error('vaccination_date')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
