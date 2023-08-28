@@ -28,7 +28,7 @@ class VaccinationController extends Controller
     public function create()
     {
 
-        return view('admin.vaccination.create');
+        return view('admin.vaccinations.create');
     }
 
     /**
@@ -70,7 +70,7 @@ class VaccinationController extends Controller
      */
     public function edit(Vaccination $vaccination)
     {
-        return view('admin.vaccination.edit', compact('vaccination'));
+        return view('admin.vaccinations.edit', compact('vaccination'));
     }
 
     /**
@@ -87,7 +87,7 @@ class VaccinationController extends Controller
         $vaccination->update($form_data);
 
         $message = 'Aggiornamento  completato';
-        return redirect()->route('admin.vaccination.index', ['message' => $message]);
+        return redirect()->route('admin.vaccinations.index', ['message' => $message]);
     }
 
     /**

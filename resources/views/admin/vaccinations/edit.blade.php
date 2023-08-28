@@ -6,7 +6,7 @@
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center">
                     <h2>Modify Vaccination</h2>
-                    <a href=" {{ route('admin.vaccination.index')}} " class="btn btn-secondary btn-sm">Vaccination</a>
+                    <a href=" {{ route('admin.vaccinations.index')}} " class="btn btn-secondary btn-sm">Vaccination</a>
                 </div>
                 <div>
                     @if($errors->any())
@@ -18,11 +18,9 @@
                             </ul>
                         </div>
                     @endif
-                    <form action=" {{ route('admin.vaccination.update', $vaccination->id) }} " method="POST">
+                    <form action=" {{ route('admin.vaccinations.update', $vaccination->id) }} " method="POST">
                         @csrf
                         @method('PUT')
-                        <form action=" {{ route('admin.vaccinations.store') }} " method="POST">
-                        @csrf
                         <div class="class-group">
                             <label class="control-label">Name</label>
                             <input type="text" id="vaccine_name" name="vaccine_name" class="form-control @error('vaccine_name')is-invalid @enderror" placeholder="Name" value="{{ old('name') ?? $vaccination->vaccine_name}}">

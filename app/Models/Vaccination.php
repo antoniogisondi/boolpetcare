@@ -10,6 +10,8 @@ class Vaccination extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['vaccine_name', 'vaccination_date', 'dosage', 'notes'];
+
     public function pets() {
         return $this->belongsToMany(Pet::class);
     }
