@@ -1,6 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
 @import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 
-.my-content{
+.my-content {
     width: 200px;
+}
+
+.logo_laravel {
+    width: 50%;
+
+    img {
+        width: 30%;
+    }
 }
