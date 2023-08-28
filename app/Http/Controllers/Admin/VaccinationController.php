@@ -26,7 +26,7 @@ class VaccinationController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.vaccination.create');
     }
 
     /**
@@ -37,7 +37,16 @@ class VaccinationController extends Controller
      */
     public function store(StoreVaccinationRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $vaccination = new Vaccination();
+
+        $vaccination->fill($form_data);
+
+        $vaccination->save();
+
+        $message = 'Creazione vaccino completato';
+        return redirect()->route('admin.vaccinations.index', ['message' => $message]);
     }
 
     /**
@@ -59,7 +68,7 @@ class VaccinationController extends Controller
      */
     public function edit(Vaccination $vaccination)
     {
-        //
+        return view('admin.vaccination.edit', compact('vaccination'));
     }
 
     /**
@@ -71,7 +80,12 @@ class VaccinationController extends Controller
      */
     public function update(UpdateVaccinationRequest $request, Vaccination $vaccination)
     {
-        //
+        $form_data = $request->all();
+
+        $vaccination->update($form_data);
+
+        $message = 'Aggiornamento  completato';
+        return redirect()->route('admin.vaccination.index', ['message' => $message]);
     }
 
     /**
