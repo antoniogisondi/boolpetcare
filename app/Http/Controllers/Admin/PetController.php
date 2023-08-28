@@ -42,7 +42,7 @@ class PetController extends Controller
      */
     public function create()
     {
-        return view('admin.pets.create');
+        return view('adcdvvmin.pets.create');
     }
 
     /**
