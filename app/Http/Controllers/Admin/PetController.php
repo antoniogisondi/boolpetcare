@@ -109,6 +109,10 @@ class PetController extends Controller
             $pet->vaccinations()->sync($request->vaccinations);
         }
 
+        if($request->has('vaccination')){
+            $pet->vaccination()->sync($request->vaccination);
+        }
+
         $message = 'Aggiornamento animale completato';
         return redirect()->route('admin.pets.index', ['message' => $message]);
     }
