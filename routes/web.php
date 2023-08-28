@@ -28,7 +28,7 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('pets', PetController::class);
-    Route::resource('vaccinations', Vaccination::class);
+    Route::resource('vaccinations', VaccinationController::class);
 });
 
 Route::middleware('auth')->group(function () {

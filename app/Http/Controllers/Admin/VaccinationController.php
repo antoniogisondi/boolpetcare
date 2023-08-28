@@ -17,7 +17,7 @@ class VaccinationController extends Controller
     public function index()
     {
         $vaccinations = Vaccination::all();
-        return view('admin.vaccinations.index');
+        return view('admin.vaccinations.index', compact('vaccinations'));
     }
 
     /**
