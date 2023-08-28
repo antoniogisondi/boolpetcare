@@ -17,7 +17,7 @@
                     </div>
                     @endif
                     <div class="link">
-                        <a class="btn btn-primary" href="{{ route('admin.pets.index') }}">Gli animali della nostra clinica</a>
+                        <a class="btn btn-primary" href="{{ route('admin.pets.index') }}">Gli animalis della nostra clinica</a>
                     </div>
                 </div>
             </div>

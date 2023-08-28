@@ -96,6 +96,7 @@ class VaccinationController extends Controller
      */
     public function destroy(Vaccination $vaccination)
     {
-        //
+        $vaccination->delete();
+        return redirect()->route('admin.vaccinations.index');
     }
 }
