@@ -61,6 +61,10 @@ class PetController extends Controller
 
         $pets->save();
 
+        if($request->has('vaccination')){
+            $pets->vaccination()->attach($request->vaccination);
+        }
+
         $message = 'Creazione animale completata';
         return redirect()->route('admin.pets.index', ['message' => $message]);
     }
@@ -99,6 +103,10 @@ class PetController extends Controller
         $form_data = $request->all();
 
         $pet->update($form_data);
+
+        if($request->has('vaccination')){
+            $pet->vaccination()->sync($request->vaccination);
+        }
 
         $message = 'Aggiornamento animale completato';
         return redirect()->route('admin.pets.index', ['message' => $message]);
