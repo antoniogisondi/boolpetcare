@@ -10,7 +10,7 @@ class Vaccination extends Model
 {
     use HasFactory;
 
-    public function Pet() {
-        return $this->belongsTo(Animal::class);
+    public function pets() {
+        return $this->belongsToMany(Animal::class);
     }
 }

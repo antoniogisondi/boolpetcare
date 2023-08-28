@@ -13,6 +13,6 @@ class Pet extends Model
     protected $fillable = ['name', 'species', 'date_born', 'genre', 'owner', 'notes'];
 
     public function vaccinations() {
-        return $this->hasMany(Vaccination::class);
+        return $this->belongsToMany(Vaccination::class);
     }
 }
