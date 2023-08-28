@@ -65,6 +65,19 @@
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
+                        <div class="form-group my-4">
+                            <label class="control-label my-2">Vaccini:</label>
+                            @foreach($vaccinations as $vaccination)
+                                <div class="form-check">
+                                    <input type="checkbox" name="vaccinations[]" value="{{ $vaccination->id }}" class="form-check-input @error('vaccinations') is-invalid @enderror"
+                                        @if(in_array($vaccination->id, $pet->vaccinations->pluck('id')->toArray())) checked @endif>
+                                    <label class="form-check-label">{{ $vaccination->vaccine_name}}</label>
+                                </div>
+                            @endforeach
+                            @error('vaccinations')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="class-group my-3">
                             <button type="submit" class="btn btn-primary btn-success">Modify</button>
                         </div>

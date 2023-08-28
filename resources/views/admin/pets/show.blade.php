@@ -15,6 +15,11 @@
                             <li><strong>Specie:</strong> {{ $pet->species}}</li>
                             <li><strong>Data di nascita:</strong> {{ $pet->date_born}}</li>
                             <li><strong>Proprietario:</strong> {{ $pet->owner}}</li>
+                            <li><strong>Vaccinazioni:</strong>
+                                @foreach ($pet->vaccinations as $vaccine)
+                                    <span>{{ $vaccine->vaccine_name }},</span>
+                                @endforeach
+                            </li>
                             <li>
                                 <strong>Segni particolari:</strong>
                                 <ul>

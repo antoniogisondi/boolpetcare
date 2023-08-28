@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pet;
+use App\Models\Vaccination;
 use App\Http\Requests\StorePetRequest;
 use App\Http\Requests\UpdatePetRequest;
 use Illuminate\Http\Request;
@@ -42,7 +43,8 @@ class PetController extends Controller
      */
     public function create()
     {
-        return view('admin.pets.create');
+        $vaccinations = Vaccination::all();
+        return view('admin.pets.create', compact('vaccinations'));
     }
 
     /**
@@ -61,6 +63,9 @@ class PetController extends Controller
 
         $pets->save();
 
+        if($request->has('vaccinations')){
+            $pets->vaccinations()->attach($request->vaccinations);
+        }
         $message = 'Creazione animale completata';
         return redirect()->route('admin.pets.index', ['message' => $message]);
     }
@@ -84,7 +89,8 @@ class PetController extends Controller
      */
     public function edit(Pet $pet)
     {
-        return view('admin.pets.edit', compact('pet'));
+        $vaccinations = Vaccination::all();
+        return view('admin.pets.edit', compact('pet', 'vaccinations'));
     }
 
     /**
@@ -99,6 +105,9 @@ class PetController extends Controller
         $form_data = $request->all();
 
         $pet->update($form_data);
+        if($request->has('vaccinations')){
+            $pet->vaccinations()->sync($request->vaccinations);
+        }
 
         $message = 'Aggiornamento animale completato';
         return redirect()->route('admin.pets.index', ['message' => $message]);
@@ -112,6 +121,7 @@ class PetController extends Controller
      */
     public function destroy(Pet $pet)
     {
+        $pet->vaccinations()->detach();
         $pet->delete();
         return redirect()->route('admin.pets.index');
     }

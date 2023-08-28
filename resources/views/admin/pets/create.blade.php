@@ -31,7 +31,7 @@
                         <div class="class-group">
                             <label class="control-label">Species</label>
                             <input type="text" id="species" name="species" class="form-control @error('species')is-invalid @enderror" placeholder="Species" value="{{ old('species') }}">
-                            @error('name')
+                            @error('species')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
@@ -61,6 +61,18 @@
                             <input type="text" id="notes" name="notes" class="form-control @error('notes')is-invalid @enderror" placeholder="Notes" value="{{ old('notes') }}">
                             @error('notes')
                                 <div class="text-danger"> {{ $message }} </div>
+                            @enderror
+                        </div>
+                        <div class="form-group my-4">
+                            <label class="control-label my-2">Vaccino:</label>
+                            @foreach($vaccinations as $vaccination)
+                                <div class="form-check">
+                                    <input type="checkbox" name="vaccinations[]" id="vaccination_{{ $vaccination->id }}" value="{{ $vaccination->id }}" class="form-check-input @error('vaccinations') is-invalid @enderror">
+                                    <label class="form-check-label">{{ $vaccination->vaccine_name }}</label>
+                                </div>
+                            @endforeach
+                            @error('vaccinations')
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="class-group my-3">
