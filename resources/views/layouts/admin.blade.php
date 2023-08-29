@@ -25,7 +25,7 @@
 
 
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+            <div class="container logos">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_laravel">
                         <img src="{{ Vite::asset('./resources/img/pet-logo.png')}}">

@@ -17,9 +17,13 @@
                             <li><strong>Proprietario:</strong> {{ $pet->owner}}</li>
                             <li><strong>Vaccinazioni:</strong>
                                 @foreach ($pet->vaccinations as $vaccine)
-                                    <span>{{ $vaccine->vaccine_name }},</span>
+                                    @if ($vaccine->vaccine_name)
+                                        <span>{{ $vaccine->vaccine_name }},</span>
+                                    @else
+                                        <p>Non è stata eseguita alcuna vaccinazione</p>
+                                    @endif
                                 @endforeach
-                            </li>
+                            </li> 
                             <li>
                                 <strong>Segni particolari:</strong>
                                 <ul>
