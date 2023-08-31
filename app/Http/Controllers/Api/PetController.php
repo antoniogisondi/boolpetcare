@@ -16,4 +16,21 @@ class PetController extends Controller
             'results'  => $pets
         ]);
     }
+
+    public function show($name){
+        $pet = Pet::all()->where('name', $name)->first();
+
+        if($pet){
+            return response()->json([
+                'success'  => true,
+                'pet'  => $pet
+            ]);
+        }
+        else{
+            return response()->json([
+                'success'  => false,
+                'error'  => 'Nessun animale trovato'
+            ]);
+        }
+    }
 }
