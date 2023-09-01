@@ -13,22 +13,22 @@ use App\Models\Lead;
 
 class LeadController extends Controller
 {
-    public function store(StoreLeadRequest $request){
+    public function store(Request $request){
         $data = $request->all();
     
-        // $validator = Validator::make($data, [
-        //     'name'  => 'required',
-        //     'email'  => 'required|email',
-        //     'content' => 'required'
-        // ]);
+         $validator = Validator::make($data, [
+             'name'  => 'required',
+             'email'  => 'required|email',
+             'content' => 'required'
+         ]);
     
      
-        // if($validator->fails()){
-        //     return response()->json([
-        //         'status' => false,
-        //         'errors' => $validator->errors()
-        //     ]);
-        // }
+         if($validator->fails()){
+             return response()->json([
+                 'status' => false,
+                 'errors' => $validator->errors()
+             ]);
+         }
     
    
         $new_lead = new Lead();
@@ -40,7 +40,7 @@ class LeadController extends Controller
     
 
         return response()->json([
-            'status' => true,
+            'success' => true,
         ]);
     }
 }
