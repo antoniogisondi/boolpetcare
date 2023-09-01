@@ -3,8 +3,15 @@
 @section('content')
 
 <div class="container">
-<div class="col-12 col-sm-6 col-md-3 my-5">
-  <a href="{{route('admin.pets.create')}}" class="btn btn-primary">Aggiungi animale</a>
+<div class="col-12 col-sm-6 col-md-3 my-5 w-100">
+  <div class="d-flex justify-content-between">
+    <div>
+      <a href="{{route('admin.pets.create')}}" class="btn btn-primary">Aggiungi animale</a>
+    </div>
+    <div>
+      <a href="{{route('admin.vaccinations.index')}}" class="btn btn-primary">Lista dei vaccini</a>
+    </div>
+  </div>
 </div>
 <form action="{{ route('admin.pets.index') }}" method="GET">
   @csrf
@@ -44,12 +51,12 @@
                 <td>{{$pet->owner}}</td>
                 <td>
                   <div class="d-flex align-items-center justify-content-between my-content">
-                      <a href="{{route('admin.pets.show', $pet->id)}}"><i class="fa-solid fa-eye"></i></a>
-                      <a href="{{route('admin.pets.edit', $pet->id)}}" class="mx-3"><i class="fa-solid fa-pen-to-square text-warning"></i></a>
+                      <a class="btn btn-sm btn-primary" href="{{route('admin.pets.show', $pet->id)}}"><i class="fa-solid fa-eye"></i></a>
+                      <a class="btn btn-sm btn-warning" href="{{route('admin.pets.edit', $pet->id)}}" class="mx-3"><i class="fa-solid fa-pen-to-square"></i></a>
                       <form class="form-delete" action="{{route('admin.pets.destroy', $pet->id)}}" method="POST">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn text-danger">
+                          <button type="submit" class="btn btn-sm btn-danger">
                               <i class="fa-solid fa-trash-can"></i>
                           </button>
                       </form>

@@ -4,10 +4,10 @@
 {{-- prova --}}
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 my-3">
                 <div class="d-flex justify-content-between align-items-center">
                     <h2>Insert a new pets</h2>
-                    <a href=" {{ route('admin.pets.index')}} " class="btn btn-secondary btn-sm">Pets</a>
+                    <a href=" {{ route('admin.pets.index')}} " class="btn btn-secondary btn-sm">Gli animali della nostra clinica</a>
                 </div>
                 <div>
                     @if($errors->any())
