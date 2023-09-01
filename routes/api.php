@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/pets', [PetController::class, 'index']);
-Route::get('/pets/{name}', [PetController::class, 'show']);
+Route::get('/pets/{id}', [PetController::class, 'show']);
 

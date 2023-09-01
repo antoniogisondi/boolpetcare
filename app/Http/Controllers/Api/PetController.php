@@ -10,15 +10,15 @@ use App\Models\Pet;
 class PetController extends Controller
 {
     public function index(){
-        $pets = Pet::all()->paginate(3);
+        $pets = Pet::paginate(3);
         return response()->json([
             'success'  => true,
             'results'  => $pets
         ]);
     }
 
-    public function show($name){
-        $pet = Pet::all()->where('name', $name)->first();
+    public function show($id){
+        $pet = Pet::all()->where('id', $id)->first();
 
         if($pet){
             return response()->json([
