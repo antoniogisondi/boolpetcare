@@ -19,7 +19,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action=" {{ route('admin.pets.store') }} " method="POST">
+                    <form action=" {{ route('admin.pets.store') }} " method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="class-group">
                             <label class="control-label">Name</label>
@@ -75,6 +75,14 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="col-12 my-3">
+                                <!-- Immagine -->
+                                <label class="control-label my-3">Immagine</label>
+                                <input type="file" name="image" id="image" placeholder="Inserisci la tua immagine" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}">
+                                @error('image')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                         <div class="class-group my-3">
                             <button type="submit" class="btn btn-primary btn-success">Create</button>
                         </div>

@@ -11,6 +11,9 @@
 
                     <div class="card-body">
                         <strong>Dettagli:</strong>
+                        <div class="col-12 my-5">
+                            <img src="{{ asset('storage/'. $pet->image) }}" width="20%" >
+                        </div>
                         <ul>
                             <li><strong>Specie:</strong> {{ $pet->species}}</li>
                             <li><strong>Data di nascita:</strong> {{ $pet->date_born}}</li>

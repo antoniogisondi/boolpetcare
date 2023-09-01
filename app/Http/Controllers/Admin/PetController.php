@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\facades\Storage;
 use App\Models\Pet;
 use App\Models\Vaccination;
 use App\Http\Requests\StorePetRequest;
@@ -59,6 +60,11 @@ class PetController extends Controller
 
         $pets = new Pet();
 
+        if($request->hasFile('image')){
+            $path = Storage::put('pets-image', $request->image);
+            $form_data['image'] = $path;
+        }
+
         $pets->fill($form_data);
 
         $pets->save();
@@ -103,6 +109,15 @@ class PetController extends Controller
     public function update(UpdatePetRequest $request, Pet $pet)
     {
         $form_data = $request->all();
+
+        if($request->hasFile('image')){
+            if($pet->image){
+                Storage::delete($pet->image);
+            }
+
+            $path = Storage::put('pets-image', $request->image);
+            $form_data['image'] = $path;
+        }
 
         $pet->update($form_data);
         if($request->has('vaccinations')){

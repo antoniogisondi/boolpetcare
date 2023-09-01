@@ -29,7 +29,8 @@ class StorePetRequest extends FormRequest
             'date_born' => 'required',
             'genre' => 'required|max:100',
             'owner' => 'required|max:50',
-            'vaccinations' => 'required|exists:vaccinations,id'
+            'vaccinations' => 'required|exists:vaccinations,id',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ];
     }
     public function messages(){
@@ -37,7 +38,9 @@ class StorePetRequest extends FormRequest
             'required'  => 'Il campo :attribute è obbligatorio.',
             'max'       => 'Il campo :attribute non può superare :max caratteri.',
             'vaccinations.required' => 'Il campo delle vaccinazioni è obbligatorio',
-            'vaccinations.exists'   => 'Il campo selezionato non è valido'
+            'vaccinations.exists'   => 'Il campo selezionato non è valido',
+            'image.mimes' => 'Il formato dell\'immagine non è valido. Si prega di caricare un\'immagine in formato JPEG, PNG, JPG, GIF o SVG.',
+            'image' => 'Il tipo di file non è consentito. Si prega di caricare un\'immagine in formato JPEG, PNG, JPG, GIF o SVG.',
         ];
     }
 }

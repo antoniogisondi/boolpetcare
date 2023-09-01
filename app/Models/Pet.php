@@ -11,7 +11,7 @@ class Pet extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'species', 'date_born', 'genre', 'owner', 'notes', 'slug'];
+    protected $fillable = ['name', 'species', 'date_born', 'genre', 'owner', 'notes', 'slug', 'image'];
 
     public function generateSlug()
     {
