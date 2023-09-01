@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\PetController as PetController;
+use App\Http\Controllers\Api\LeadController as LeadController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/pets', [PetController::class, 'index']);
 Route::get('/pets/{id}', [PetController::class, 'show']);
+Route::post('/contacts', [LeadController::class, 'store']);
 
