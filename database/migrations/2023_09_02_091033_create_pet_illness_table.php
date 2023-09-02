@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('pet_illness', function (Blueprint $table) {
             $table->unsignedBigInteger('pet_id');
-            $table->unsignedBigInteger('illness_id');
-
             $table->foreign('pet_id')->references('id')->on('pets');
+            
+            $table->unsignedBigInteger('illness_id');
             $table->foreign('illness_id')->references('id')->on('illnesses');
         });
     }
