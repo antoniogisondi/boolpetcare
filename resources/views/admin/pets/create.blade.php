@@ -75,6 +75,13 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group my-4">
+                            <p>Seleziona le malattie</p>
+                            @foreach ($illnesses as $illness)
+                                <input type="checkbox" class="form-control-check" value="{{ $illness->id }}" name="illnesses[]" {{ in_array($illness->id , old('illnesses', [])) ? 'checked' : ''}}>
+                                <label class="form-control-label">{{ $illness->name }}</label>
+                            @endforeach
+                        </div>
                         <div class="col-12 my-3">
                                 <!-- Immagine -->
                                 <label class="control-label my-3">Immagine</label>

@@ -27,6 +27,20 @@
                                     @endif
                                 @endforeach
                             </li> 
+                            @if ($pet->illnesses)
+                                <li><strong>Malattie:</strong>
+                                    @foreach ($pet->illnesses as $ill)
+                                        @if ($ill->name)
+                                            <span>{{ $ill->name }},</span>   
+                                        @endif
+                                    @endforeach
+                                </li> 
+                                @else
+                                    <li>
+                                        <strong>Malattie:</strong>Non è stata diagnosticata alcun tipo di malattia
+                                    </li>
+                                @endif
+                               
                             <li>
                                 <strong>Segni particolari:</strong>
                                 <ul>

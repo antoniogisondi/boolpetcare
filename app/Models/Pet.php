@@ -22,7 +22,7 @@ class Pet extends Model
     public function vaccinations() {
         return $this->belongsToMany(Vaccination::class);
     }
-    public function illnesses() {
+    public function illness() {
         return $this->belongsToMany(Illness::class);
     }
 }
