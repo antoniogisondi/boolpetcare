@@ -4,12 +4,18 @@
 
 <div class="container">
   <div class="col-12 col-sm-6 col-md-3 my-5 w-100">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between align-items-center">
       <div>
         <a href="{{route('admin.vaccinations.create')}}" class="btn btn-primary">Aggiungi un vaccino</a>
       </div>
       <div>
         <a href="{{route('admin.pets.index')}}" class="btn btn-primary">Gli animali della nostra clinica</a>
+      </div>
+      <div>
+        <a href="{{route('admin.illnesses.index')}}" class="btn btn-primary">Lista delle malattie</a>
+      </div>
+      <div>
+        <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Torna alla dashboard</a>
       </div>
     </div>
 </div>
