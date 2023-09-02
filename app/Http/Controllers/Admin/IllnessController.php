@@ -17,7 +17,7 @@ class IllnessController extends Controller
     public function index()
     {
         $illnesses = Illness::all();
-        return view('admin.illness.index', compact('illnesses'));
+        return view('admin.illnesses.index', compact('illnesses'));
     }
 
     /**
@@ -27,7 +27,7 @@ class IllnessController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.illnesses.create');
     }
 
     /**
@@ -38,7 +38,13 @@ class IllnessController extends Controller
      */
     public function store(StoreIllnessRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $illnesses = new Illness();
+        $illnesses->fill($form_data);
+        $illnesses->save();
+
+        return redirect()->route('admin.illnesses.index');
     }
 
     /**
@@ -60,7 +66,7 @@ class IllnessController extends Controller
      */
     public function edit(Illness $illness)
     {
-        //
+        return view('admin.illnesses.edit', compact('illness'));
     }
 
     /**
@@ -72,7 +78,10 @@ class IllnessController extends Controller
      */
     public function update(UpdateIllnessRequest $request, Illness $illness)
     {
-        //
+        $form_data = $request->all();
+        $illness->update($form_data);
+        $message = 'Modifica completata';
+        return redirect()->route('admin.illnesses.index', ['message' => $message]);
     }
 
     /**
@@ -83,6 +92,8 @@ class IllnessController extends Controller
      */
     public function destroy(Illness $illness)
     {
-        //
+        $illness->delete();
+
+        return redirect()->route('admin.illnesses.index');
     }
 }
