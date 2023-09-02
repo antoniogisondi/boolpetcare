@@ -4,12 +4,18 @@
 
 <div class="container">
 <div class="col-12 col-sm-6 col-md-3 my-5 w-100">
-  <div class="d-flex justify-content-between">
+  <div class="d-flex justify-content-between align-items-center">
     <div>
       <a href="{{route('admin.pets.create')}}" class="btn btn-primary">Aggiungi un animale</a>
     </div>
     <div>
-      <a href="{{route('admin.pets.index')}}" class="btn btn-primary">Torna agli animali</a>
+      <a class="btn btn-primary my-3" href="{{ route('admin.vaccinations.index') }}">Lista dei vaccini</a>
+    </div>
+    <div>
+      <a href="{{route('admin.illnesses.index')}}" class="btn btn-primary">Lista delle malattie</a>
+    </div>
+    <div>
+      <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Torna alla dashboard</a>
     </div>
   </div>
 </div>
@@ -25,7 +31,7 @@
 </form>
 
 
-    <div class="card">
+    <div class="card mb-3">
       <div class="card-header">
         <h3>I nostri animali</h3>
       </div>
