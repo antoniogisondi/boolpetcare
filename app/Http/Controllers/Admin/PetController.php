@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\facades\Storage;
 use App\Models\Pet;
 use App\Models\Vaccination;
+use App\Models\Illness;
 use App\Http\Requests\StorePetRequest;
 use App\Http\Requests\UpdatePetRequest;
 use Illuminate\Http\Request;
@@ -44,8 +45,9 @@ class PetController extends Controller
      */
     public function create()
     {
+        $illnesses = Illness::all();
         $vaccinations = Vaccination::all();
-        return view('admin.pets.create', compact('vaccinations'));
+        return view('admin.pets.create', compact('vaccinations', 'illnesses'));
     }
 
     /**
@@ -72,6 +74,11 @@ class PetController extends Controller
         if($request->has('vaccinations')){
             $pets->vaccinations()->attach($request->vaccinations);
         }
+
+        if($request->has('illnesses')){
+            $pets->illnesses()->attach($request->illnesses);
+        }
+
         $message = 'Creazione animale completata';
         return redirect()->route('admin.pets.index', ['message' => $message]);
     }
@@ -95,8 +102,9 @@ class PetController extends Controller
      */
     public function edit(Pet $pet)
     {
+        $illnesses = Illness::all();
         $vaccinations = Vaccination::all();
-        return view('admin.pets.edit', compact('pet', 'vaccinations'));
+        return view('admin.pets.edit', compact('pet', 'vaccinations', 'illnesses'));
     }
 
     /**
