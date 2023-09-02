@@ -13,7 +13,7 @@ class StoreIllnessRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,21 @@ class StoreIllnessRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|max:30',
+            'diagnosis' =>  'required',
+            'treatment' =>  'required',
+            'notes'     =>  'required|max:300'
+        ];
+    }
+
+    public function messages(){
+        return[
+            'name.required'         => 'Il nome è obbligatorio',
+            'name.max'              => 'Il nome deve essere composto da un massimo di :max caratteri',
+            'diagnosis.required'    => 'La diagnosi è obbligatoria',
+            'treatment.required'    => 'Il trattamento è obbligatorio',
+            'notes.required'        => 'Il campo delle note è obbligatorio',
+            'notes.max'             => 'Il campo delle note deve essere composto da un massimo di :max caratteri'
         ];
     }
 }

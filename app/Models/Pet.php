@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Vaccination;
+use App\Models\Illness;
 
 class Pet extends Model
 {
@@ -20,5 +21,8 @@ class Pet extends Model
 
     public function vaccinations() {
         return $this->belongsToMany(Vaccination::class);
+    }
+    public function illnesses() {
+        return $this->belongsToMany(Illness::class);
     }
 }
