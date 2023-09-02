@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('illness_id');
 
             $table->foreign('pet_id')->references('id')->on('pets');
-            $table->foreign('illness_id')->references('id')->on('illness');
+            $table->foreign('illness_id')->references('id')->on('illnesses');
         });
     }
 
