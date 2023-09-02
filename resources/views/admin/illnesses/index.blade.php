@@ -6,10 +6,10 @@
 <div class="col-12 col-sm-6 col-md-3 my-5 w-100">
   <div class="d-flex justify-content-between">
     <div>
-      <a href="{{route('admin.pets.create')}}" class="btn btn-primary">Aggiungi animale</a>
+      <a href="{{route('admin.illnesses.create')}}" class="btn btn-primary">Aggiungi una malattia</a>
     </div>
     <div>
-      <a href="{{route('admin.vaccinations.index')}}" class="btn btn-primary">Lista dei vaccini</a>
+      <a href="{{route('admin.illnesses.index')}}" class="btn btn-primary">Lista delle malattie</a>
     </div>
   </div>
 </div>
@@ -27,7 +27,7 @@
 
     <div class="card">
       <div class="card-header">
-        <h3>I nostri animali</h3>
+        <h3>Le nostre malattie diagnosticate</h3>
       </div>
       <div class="card-body">
         <table class="table table-striped">
@@ -35,25 +35,27 @@
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Specie</th>
-                <th scope="col">Nato</th>
-                <th scope="col">Proprietario</th>
+                <th scope="col">Slug</th>
+                <th scope="col">Diagnosi</th>
+                <th scope="col">Trattamento</th>
+                <th scope="col">Note</th>
                 <th scope="col">Visualizza/Modifica/Elimina</th>
               </tr>
             </thead>
             <tbody>
-                @foreach($pets as $pet)
+                @foreach($illnesses as $illness)
               <tr >
-                <th scope="row">{{$pet->id}}</th>
-                <td>{{$pet->name}}</td>
-                <td>{{$pet->species}}</td>
-                <td>{{$pet->date_born}}</td>
-                <td>{{$pet->owner}}</td>
+                <th scope="row">{{$illness->id}}</th>
+                <td>{{$illness->name}}</td>
+                <td>{{$illness->slug}}</td>
+                <td>{{$illness->diagnosis}}</td>
+                <td>{{$illness->treatment}}</td>
+                <td>{{$illness->notes}}</td>
                 <td>
                   <div class="d-flex align-items-center justify-content-between my-content">
-                      <a class="btn btn-sm btn-primary" href="{{route('admin.pets.show', $pet->id)}}"><i class="fa-solid fa-eye"></i></a>
-                      <a class="btn btn-sm btn-warning" href="{{route('admin.pets.edit', $pet->id)}}" class="mx-3"><i class="fa-solid fa-pen-to-square"></i></a>
-                      <form class="form-delete" action="{{route('admin.pets.destroy', $pet->id)}}" method="POST">
+                      <a class="btn btn-sm btn-primary" href="{{route('admin.illnesses.show', $illness->id)}}"><i class="fa-solid fa-eye"></i></a>
+                      <a class="btn btn-sm btn-warning" href="{{route('admin.illnesses.edit', $illness->id)}}" class="mx-3"><i class="fa-solid fa-pen-to-square"></i></a>
+                      <form class="form-delete" action="{{route('admin.illnesses.destroy', $illness->id)}}" method="POST">
                           @csrf
                           @method('DELETE')
                           <button type="submit" class="btn btn-sm btn-danger">
