@@ -19,6 +19,7 @@
                     <div class=" col-3 link d-flex flex-column">
                         <a class="btn btn-primary mb-3" href="{{ route('admin.pets.index') }}">Gli animali della nostra clinica</a>
                         <a class="btn btn-primary" href="{{ route('admin.vaccinations.index') }}">Lista dei vaccini</a>
+                        <a class="btn btn-primary" href="{{ route('admin.illnesses.index') }}">Lista delle malattie diagnosticate</a>
                     </div>
                 </div>
             </div>
