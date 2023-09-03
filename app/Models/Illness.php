@@ -12,8 +12,8 @@ class Illness extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'slug', 'diagnosis', 'treatment', 'notes'];
-    
-    public function generateSlug($name)
+
+    public static function generateSlug($name)
     {
         return Str::slug($name, '-');
     }
