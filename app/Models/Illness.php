@@ -14,7 +14,7 @@ class Illness extends Model
     protected $fillable = ['name', 'slug', 'diagnosis', 'treatment', 'notes'];
     public function generateSlug()
     {
-        $this->slug = Str::slug($this->name);
+        $this->slug = Str::slug($this->name, '-');
     }
 
     public function pets() {

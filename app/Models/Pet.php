@@ -16,7 +16,7 @@ class Pet extends Model
 
     public function generateSlug()
     {
-        $this->slug = Str::slug($this->name);
+        $this->slug = Str::slug($this->name, '-');
     }
 
     public function vaccinations() {
