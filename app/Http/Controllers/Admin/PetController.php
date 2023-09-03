@@ -120,6 +120,7 @@ class PetController extends Controller
     {
         $form_data = $request->all();
         
+        $form_data['slug'] =  $pet->generateSlug($form_data['name']);
         if($request->hasFile('image')){
             if($pet->image){
                 Storage::delete($pet->image);
@@ -138,7 +139,6 @@ class PetController extends Controller
             $pet->illnesses()->sync($request->illnesses);
         }
         
-        $form_data['slug'] =  $pet->generateSlug($form_data['name']);
         $message = 'Aggiornamento animale completato';
         return redirect()->route('admin.pets.index', ['message' => $message]);
     }
