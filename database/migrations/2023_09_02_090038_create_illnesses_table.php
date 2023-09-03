@@ -17,17 +17,11 @@ return new class extends Migration
         Schema::create('illnesses', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
-            $table->string('slug', 80)->nullable();
+            $table->string('slug', 80);
             $table->string('diagnosis', 80);
             $table->string('treatment', 80);
             $table->text('notes');
             $table->timestamps();
-        });
-
-        DB::table('illnesses')->get()->each(function ($record) {
-            DB::table('illnesses')
-                ->where('id', $record->id)
-                ->update(['slug' => Str::slug($record->name)]);
         });
     }
 
