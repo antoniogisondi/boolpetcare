@@ -14,7 +14,7 @@ class Pet extends Model
 
     protected $fillable = ['name', 'slug', 'species', 'date_born', 'genre', 'owner', 'notes', 'image'];
 
-    public function generateSlug($name)
+    public static function generateSlug($name)
     {
         return Str::slug($name, '-');
     }

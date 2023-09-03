@@ -67,9 +67,9 @@ class PetController extends Controller
             $form_data['image'] = $path;
         }
         
-        $pets->fill($form_data);
-        
         $form_data['slug'] =  $pets->generateSlug($form_data['name']);
+
+        $pets->fill($form_data);
 
         $pets->save();
 
