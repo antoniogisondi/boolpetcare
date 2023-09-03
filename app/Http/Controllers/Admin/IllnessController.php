@@ -41,6 +41,7 @@ class IllnessController extends Controller
         $form_data = $request->all();
 
         $illnesses = new Illness();
+        $form_data['slug'] =  $illnesses->generateSlug($form_data['name']);
         $illnesses->fill($form_data);
         $illnesses->save();
 
@@ -79,6 +80,7 @@ class IllnessController extends Controller
     public function update(UpdateIllnessRequest $request, Illness $illness)
     {
         $form_data = $request->all();
+        $form_data['slug'] =  $illness->generateSlug($form_data['name']);
         $illness->update($form_data);
         $message = 'Modifica completata';
         return redirect()->route('admin.illnesses.index', ['message' => $message]);

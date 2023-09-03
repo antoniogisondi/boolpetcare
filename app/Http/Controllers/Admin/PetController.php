@@ -66,6 +66,7 @@ class PetController extends Controller
             $path = Storage::put('pets-image', $request->image);
             $form_data['image'] = $path;
         }
+        $form_data['slug'] =  $pets->generateSlug($form_data['name']);
 
         $pets->fill($form_data);
 
@@ -117,6 +118,7 @@ class PetController extends Controller
     public function update(UpdatePetRequest $request, Pet $pet)
     {
         $form_data = $request->all();
+        $form_data['slug'] =  $pets->generateSlug($form_data['name']);
 
         if($request->hasFile('image')){
             if($pet->image){
