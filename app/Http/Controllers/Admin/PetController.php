@@ -76,7 +76,7 @@ class PetController extends Controller
         }
 
         if($request->has('illnesses')){
-            $pets->illness()->attach($request->illness);
+            $pets->illnesses()->attach($request->illnesses);
         }
 
         $message = 'Creazione animale completata';
@@ -137,7 +137,7 @@ class PetController extends Controller
         }
 
         if($request->has('illnesses')){
-            $pet->illness()->sync($request->illness);
+            $pet->illnesses()->sync($request->illnesses);
         }
         dd($form_data);
 
@@ -154,7 +154,7 @@ class PetController extends Controller
     public function destroy(Pet $pet)
     {
         $pet->vaccinations()->detach();
-        $pet->illness()->detach();
+        $pet->illnesses()->detach();
         $pet->delete();
         return redirect()->route('admin.pets.index');
     }
