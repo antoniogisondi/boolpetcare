@@ -4,28 +4,22 @@
 
 <div class="container">
 <div class="col-12 col-sm-6 col-md-3 my-5 w-100">
-  <div class="d-flex justify-content-between">
+  <div class="d-flex justify-content-between align-items-center">
     <div>
       <a href="{{route('admin.illnesses.create')}}" class="btn btn-primary">Aggiungi una malattia</a>
     </div>
     <div>
-      <a href="{{route('admin.illnesses.index')}}" class="btn btn-primary">Lista delle malattie</a>
-    </div>
-  </div>
-</div>
-<form action="{{ route('admin.pets.index') }}" method="GET">
-  @csrf
-  <div class="input-group mb-3">
-      <input type="text" class="form-control" name="keyword" placeholder="Cerca per nome">
-      <input type="text" class="form-control mx-3" name="species" placeholder="Cerca per specie">
-      <div class="input-group-append">
-          <button class="btn btn-outline-secondary mx-3" type="submit">Cerca</button>
+        <a href="{{route('admin.pets.index')}}" class="btn btn-primary">Gli animali della nostra clinica</a>
+      </div>
+      <div>
+        <a class="btn btn-primary my-3" href="{{ route('admin.vaccinations.index') }}">Lista dei vaccini</a>
+      </div>
+      <div>
+        <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Torna alla dashboard</a>
       </div>
   </div>
-</form>
-
-
-    <div class="card">
+</div>
+    <div class="card mb-3">
       <div class="card-header">
         <h3>Le nostre malattie diagnosticate</h3>
       </div>
