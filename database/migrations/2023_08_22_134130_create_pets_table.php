@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
-            $table->string('slug', 80);
+            $table->string('slug', 80)->nullable();
             $table->string('image')->nullable();
             $table->string('species', 50);
             $table->date('date_born');

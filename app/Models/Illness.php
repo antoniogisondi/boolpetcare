@@ -12,9 +12,10 @@ class Illness extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'slug', 'diagnosis', 'treatment', 'notes'];
-    public function generateSlug()
+    
+    public function generateSlug($name)
     {
-        $this->slug = Str::slug($this->name, '-');
+        return Str::slug($name, '-');
     }
 
     public function pets() {
