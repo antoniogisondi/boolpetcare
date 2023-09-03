@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Pet;
+use App\Models\Illness;
+use App\Models\Vaccination;
+
 
 class PetController extends Controller
 {
@@ -18,7 +21,7 @@ class PetController extends Controller
     }
 
     public function show($slug){
-        $pet = Pet::all()->where('slug', $slug)->first();
+        $pet = Pet::with('illnesses', 'vaccinations')->where('slug', $slug)->first();
 
         if($pet){
             return response()->json([
