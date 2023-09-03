@@ -139,7 +139,6 @@ class PetController extends Controller
         if($request->has('illnesses')){
             $pet->illnesses()->sync($request->illnesses);
         }
-        dd($form_data);
 
         $message = 'Aggiornamento animale completato';
         return redirect()->route('admin.pets.index', ['message' => $message]);
