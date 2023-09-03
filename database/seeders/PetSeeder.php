@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Models\Pet;
+use Illuminate\Support\Str;
 
 class PetSeeder extends Seeder
 {
@@ -19,7 +20,7 @@ class PetSeeder extends Seeder
         for ($i=0; $i < 10 ; $i++) { 
             $pet = new Pet();
             $pet->name = $faker->firstName;
-            $pet->generateSlug('name');
+            $pet->slug = Str::slug($pet->name);
             $pet->image = $faker->imageUrl(640, 480, 'project', true);
             $pet->species = $faker->randomElement(['Cane', 'Gatto', 'Pappagallo', 'Coniglio']);
             $pet->date_born = $faker->dateTimeBetween('-10 years', 'now')->format('Y-m-d');
