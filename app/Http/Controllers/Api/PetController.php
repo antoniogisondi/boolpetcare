@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 use App\Models\Pet;
+
 
 class PetController extends Controller
 {
@@ -18,18 +18,21 @@ class PetController extends Controller
     }
 
     public function show($slug){
-        $pet = Pet::all()->where('slug', $slug)->first();
+
+        $pet = Pet::with('vaccinations', 'illnesses')->where('slug', $slug)->first();
 
         if($pet){
+            
             return response()->json([
-                'success'  => true,
-                'pet'  => $pet
+                'success' => true,
+                'pet' => $pet
             ]);
-        }
-        else{
+
+        } else{
+
             return response()->json([
-                'success'  => false,
-                'error'  => 'Nessun animale trovato'
+                'success' => false,
+                'error' => 'Nessun progetto trovato'
             ]);
         }
     }
