@@ -25,7 +25,7 @@
                         @csrf
                         <div class="class-group">
                             <label class="control-label">Name</label>
-                            <input type="text" id="name" name="name" class="form-control @error('name')is-invalid @enderror" placeholder="Name" value="{{ old('name') ?? $pet->name}}">
+                            <input type="text" id="name" name="name" class="form-control @error('name')is-invalid @enderror" placeholder="Nome" value="{{ old('name') ?? $pet->name}}">
                             @error('name')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
@@ -83,7 +83,7 @@
                             @foreach($illnesses as $illness)
                                 <div class="form-check">
                                     <input type="checkbox" name="illnesses[]" value="{{ $illness->id }}" class="form-check-input @error('illness') is-invalid @enderror" {{ $pet->illnesses->contains($illness) ? 'checked' : ''}}>
-                                    <label class="form-check-label">{{ $illness->name}}</label>
+                                    <label class="form-check-label">{{ $illness->name }}</label>
                                 </div>
                             @endforeach
                             @error('illnesses')

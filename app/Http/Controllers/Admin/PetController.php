@@ -67,9 +67,9 @@ class PetController extends Controller
             $form_data['image'] = $path;
         }
         
-        $pets->fill($form_data);
-        
         $form_data['slug'] =  $pets->generateSlug($form_data['name']);
+
+        $pets->fill($form_data);
 
         $pets->save();
 
@@ -120,7 +120,6 @@ class PetController extends Controller
     {
         $form_data = $request->all();
         
-        $form_data['slug'] =  $pet->generateSlug($form_data['name']);
         if($request->hasFile('image')){
             if($pet->image){
                 Storage::delete($pet->image);
@@ -130,6 +129,7 @@ class PetController extends Controller
             $form_data['image'] = $path;
         }
         
+        $form_data['slug'] =  $pet->generateSlug($form_data['name']);
         $pet->update($form_data);
         if($request->has('vaccinations')){
             $pet->vaccinations()->sync($request->vaccinations);
