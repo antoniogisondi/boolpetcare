@@ -4,10 +4,10 @@
 {{-- prova --}}
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 my-3">
                 <div class="d-flex justify-content-between align-items-center">
                     <h2>Insert a new pets</h2>
-                    <a href=" {{ route('admin.pets.index')}} " class="btn btn-secondary btn-sm">Pets</a>
+                    <a href=" {{ route('admin.pets.index')}} " class="btn btn-secondary btn-sm">Gli animali della nostra clinica</a>
                 </div>
                 <div>
                     @if($errors->any())
@@ -19,7 +19,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action=" {{ route('admin.pets.store') }} " method="POST">
+                    <form action=" {{ route('admin.pets.store') }} " method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="class-group">
                             <label class="control-label">Name</label>
@@ -75,6 +75,21 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group my-4">
+                            <p>Seleziona le malattie</p>
+                            @foreach ($illnesses as $illness)
+                                <input type="checkbox" class="form-control-check" value="{{ $illness->id }}" name="illnesses[]" {{ in_array($illness->id , old('illnesses', [])) ? 'checked' : ''}}>
+                                <label class="form-control-label">{{ $illness->name }}</label>
+                            @endforeach
+                        </div>
+                        <div class="col-12 my-3">
+                                <!-- Immagine -->
+                                <label class="control-label my-3">Immagine</label>
+                                <input type="file" name="image" id="image" placeholder="Inserisci la tua immagine" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}">
+                                @error('image')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                         <div class="class-group my-3">
                             <button type="submit" class="btn btn-primary btn-success">Create</button>
                         </div>

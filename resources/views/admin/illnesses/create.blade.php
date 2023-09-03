@@ -6,8 +6,8 @@
         <div class="row">
             <div class="col-12 my-3">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>Insert a new vaccination</h2>
-                    <a href=" {{ route('admin.vaccinations.index')}} " class="btn btn-secondary btn-sm">Lista vaccini</a>
+                    <h2>Inserisci una nuova malattia</h2>
+                    <a href=" {{ route('admin.illnesses.index')}} " class="btn btn-secondary btn-sm">Le malattie diagnosticate</a>
                 </div>
                 <div>
                     @if($errors->any())
@@ -19,32 +19,32 @@
                             </ul>
                         </div>
                     @endif
-                    <form action=" {{ route('admin.vaccinations.store') }} " method="POST">
+                    <form action=" {{ route('admin.illnesses.store') }} " method="POST">
                         @csrf
                         <div class="class-group">
-                            <label class="control-label">Name</label>
-                            <input type="text" id="vaccine_name" name="vaccine_name" class="form-control @error('vaccine_name')is-invalid @enderror" placeholder="Name vaccination" value="{{ old('vaccine_name') }}">
-                            @error('vaccine_name')
+                            <label class="control-label">Nome della malattia</label>
+                            <input type="text" id="name" name="name" class="form-control @error('name')is-invalid @enderror" placeholder="Inserisci il nome della malattia" value="{{ old('name') }}">
+                            @error('name')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
                         <div class="class-group">
-                            <label class="control-label">Dosage</label>
-                            <input type="text" id="dosage" name="dosage" class="form-control @error('dosage')is-invalid @enderror" placeholder="dosage" value="{{ old('dosage') }}">
-                            @error('dosage')
+                            <label class="control-label">Diagnosi</label>
+                            <input type="text" id="diagnosis" name="diagnosis" class="form-control @error('diagnosis')is-invalid @enderror" placeholder="Inserisci una disgnosi" value="{{ old('diagnosis') }}">
+                            @error('diagnosis')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
                         <div class="class-group">
-                            <label class="control-label">Date</label>
-                            <input type="date" id="vaccination_date" name="vaccination_date" class="form-control @error('vaccination_date')is-invalid @enderror" placeholder="Date" value="{{ old('vaccination_date') }}">
-                            @error('vaccination_date')
+                            <label class="control-label">Trattamento</label>
+                            <input type="text" id="treatment" name="treatment" class="form-control @error('treatment')is-invalid @enderror" placeholder="Inserisci il trattamento per la malattia" value="{{ old('treatment') }}">
+                            @error('treatment')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
                         <div class="class-group">
-                            <label class="control-label">Notes</label>
-                            <input type="text" id="notes" name="notes" class="form-control @error('notes')is-invalid @enderror" placeholder="Notes" value="{{ old('notes') }}">
+                            <label class="control-label">Note varie</label>
+                            <textarea name="notes" id="notes" cols="30" rows="10" class="form-control">{{ old('notes') }}</textarea>
                             @error('notes')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror

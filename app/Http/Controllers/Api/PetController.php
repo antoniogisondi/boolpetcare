@@ -17,8 +17,8 @@ class PetController extends Controller
         ]);
     }
 
-    public function show($name){
-        $pet = Pet::all()->where('name', $name)->first();
+    public function show($slug){
+        $pet = Pet::all()->where('slug', $slug)->first();
 
         if($pet){
             return response()->json([

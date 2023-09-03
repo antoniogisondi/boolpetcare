@@ -18,7 +18,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action=" {{ route('admin.pets.update', $pet->id) }} " method="POST">
+                    <form action=" {{ route('admin.pets.update', $pet->id) }} " method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <form action=" {{ route('admin.pets.store') }} " method="POST">
@@ -75,6 +75,29 @@
                                 </div>
                             @endforeach
                             @error('vaccinations')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group my-4">
+                            <label class="control-label my-2">Malattie:</label>
+                            @foreach($illnesses as $illness)
+                                <div class="form-check">
+                                    <input type="checkbox" name="illnesses[]" value="{{ $illness->id }}" class="form-check-input @error('illness') is-invalid @enderror" {{ $pet->illnesses->contains($illness) ? 'checked' : ''}}>
+                                    <label class="form-check-label">{{ $illness->name}}</label>
+                                </div>
+                            @endforeach
+                            @error('illnesses')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div>
+                            <img src="{{ asset('storage/'.$pet->image) }}" width="600px" height="500px">
+                        </div>
+                        <div class="col-12 my-3">
+                            <!-- Immagine -->
+                            <label class="control-label my-3">Immagine</label>
+                            <input type="file" name="image" id="image" placeholder="Inserisci la tua immagine" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') ?? $pet->image}}">
+                            @error('image')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
