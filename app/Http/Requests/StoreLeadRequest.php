@@ -31,8 +31,10 @@ class StoreLeadRequest extends FormRequest
     }
     public function messages(){
         return[
-            'required'  => 'Il campo :attribute è obbligatorio.',
-            'email'       => 'Il campo :attribute non può superare è obbligatorio.',
+            'name.required'  => 'Il campo nome e il congnome è obbligatorio.',
+            'email.required'       => 'Il campo email è obbligatorio.',
+            'email.email'       => 'Questa non è un email.',
+            'content.required'       => 'Il campo messaggio è obbligatorio.'
         ];
     }
 }
