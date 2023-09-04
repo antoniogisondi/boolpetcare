@@ -91,7 +91,7 @@
                             @enderror
                         </div>
                         <div>
-                            <img src="{{ asset('storage/'.$pet->image) }}" width="600px" height="500px">
+                            <img src="{{ asset('storage/'.$pet->image) }}" width="600px" height="500px" alt="Immagine non disponibile">
                         </div>
                         <div class="col-12 my-3">
                             <!-- Immagine -->
