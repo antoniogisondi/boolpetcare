@@ -20,7 +20,11 @@ class PetSeeder extends Seeder
         for ($i=0; $i < 10 ; $i++) { 
             $pet = new Pet();
             $pet->name = $faker->firstName;
+<<<<<<< HEAD
+            $pet->slug = Str::slug($pet->name);
+=======
             $pet->slug = Pet::generateSlug($pet->name);
+>>>>>>> 753f53faf35b0a64ce89091f871c6bf441a97e94
             $pet->image = $faker->imageUrl(640, 480, 'project', true);
             $pet->species = $faker->randomElement(['Cane', 'Gatto', 'Pappagallo', 'Coniglio']);
             $pet->date_born = $faker->dateTimeBetween('-10 years', 'now')->format('Y-m-d');
