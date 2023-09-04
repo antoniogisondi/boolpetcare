@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>Modify Pets</h2>
+                    <h2>Modifica la malattia</h2>
                     <a href=" {{ route('admin.illnesses.index')}} " class="btn btn-secondary btn-sm">Torna alle malattie diagnosticate</a>
                 </div>
                 <div>

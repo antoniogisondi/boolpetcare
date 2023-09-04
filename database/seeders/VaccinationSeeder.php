@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Models\Vaccination;
+use Illuminate\Support\Str;
 
 class VaccinationSeeder extends Seeder
 {

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>Modify Pets</h2>
+                    <h2>Modifica i dati dell'animale</h2>
                     <a href=" {{ route('admin.pets.index')}} " class="btn btn-secondary btn-sm">Pets</a>
                 </div>
                 <div>
@@ -24,43 +24,43 @@
                         <form action=" {{ route('admin.pets.store') }} " method="POST">
                         @csrf
                         <div class="class-group">
-                            <label class="control-label">Name</label>
-                            <input type="text" id="name" name="name" class="form-control @error('name')is-invalid @enderror" placeholder="Nome" value="{{ old('name') ?? $pet->name}}">
+                            <label class="control-label">Nome dell'animale</label>
+                            <input type="text" id="name" name="name" class="form-control @error('name')is-invalid @enderror" placeholder="Inserisci il nome dell'animale" value="{{ old('name') ?? $pet->name}}">
                             @error('name')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
                         <div class="class-group">
-                            <label class="control-label">Species</label>
-                            <input type="text" id="species" name="species" class="form-control @error('species')is-invalid @enderror" placeholder="Species" value="{{ old('species') ?? $pet->species}}">
+                            <label class="control-label">Specie</label>
+                            <input type="text" id="species" name="species" class="form-control @error('species')is-invalid @enderror" placeholder="Inserisci la specie dell'animale" value="{{ old('species') ?? $pet->species}}">
                             @error('name')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
                         <div class="class-group">
-                            <label class="control-label">Date born</label>
-                            <input type="text" id="date_born" name="date_born" class="form-control @error('date_born')is-invalid @enderror" placeholder="Date born" value="{{ old('date_born') ?? $pet->date_born}}">
+                            <label class="control-label">Data di nascita</label>
+                            <input type="text" id="date_born" name="date_born" class="form-control @error('date_born')is-invalid @enderror" placeholder="Inserisci la data di nascita" value="{{ old('date_born') ?? $pet->date_born}}">
                             @error('date_born')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
                         <div class="class-group">
                             <label class="control-label">Genere</label>
-                            <input type="text" id="genre" name="genre" class="form-control @error('genre')is-invalid @enderror" placeholder="Genere" value="{{ old('genre') ?? $pet->genre}}">
+                            <input type="text" id="genre" name="genre" class="form-control @error('genre')is-invalid @enderror" placeholder="Inserisci il genere dell animale. Es: maschio" value="{{ old('genre') ?? $pet->genre}}">
                             @error('genre')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
                         <div class="class-group">
-                            <label class="control-label">Owner</label>
-                            <input type="text" id="owner" name="owner" class="form-control @error('owner')is-invalid @enderror" placeholder="Owner" value="{{ old('owner') ?? $pet->owner}}">
+                            <label class="control-label">Proprietario</label>
+                            <input type="text" id="owner" name="owner" class="form-control @error('owner')is-invalid @enderror" placeholder="Inserisci il nome del proprietario dell animale" value="{{ old('owner') ?? $pet->owner}}">
                             @error('owner')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
                         </div>
                         <div class="class-group">
-                            <label class="control-label">Notes</label>
-                            <input type="text" id="notes" name="notes" class="form-control @error('notes')is-invalid @enderror" placeholder="Notes" value="{{ old('notes') ?? $pet->notes}}">
+                            <label class="control-label">Note aggiuntive</label>
+                            <input type="text" id="notes" name="notes" class="form-control @error('notes')is-invalid @enderror" placeholder="Inserisci delle note aggiuntive sull'animale" value="{{ old('notes') ?? $pet->notes}}">
                             @error('notes')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
@@ -96,13 +96,13 @@
                         <div class="col-12 my-3">
                             <!-- Immagine -->
                             <label class="control-label my-3">Immagine</label>
-                            <input type="file" name="image" id="image" placeholder="Inserisci la tua immagine" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') ?? $pet->image}}">
+                            <input type="file" name="image" id="image" placeholder="Inserisci l'immagine dell'animale in questione" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') ?? $pet->image}}">
                             @error('image')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="class-group my-3">
-                            <button type="submit" class="btn btn-primary btn-success">MOdifica</button>
+                            <button type="submit" class="btn btn-primary btn-success">Modifica dati</button>
                         </div>
                     </form>
                 </div>
