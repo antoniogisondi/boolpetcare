@@ -12,10 +12,10 @@ class IllnessController extends Controller
     public function show($slug){
         $illness = Illness::with('pets', 'vaccinations')->where('slug', $slug)->first();
 
-        if($vaccinations){
+        if($illness){
             return response()->json([
                 'success'  => true,
-                'vaccination'  => $post
+                'vaccination'  => $illness
             ]);
         }
         else{
