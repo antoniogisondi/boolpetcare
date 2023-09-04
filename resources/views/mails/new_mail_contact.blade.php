@@ -1,7 +1,7 @@
-<h1>Nuova email</h1>
+<h1>Nuova email</h1><br>
 <p>
-    {{$lead->name}}
-    {{$lead->surname}}
-    {{$lead->email}}
+    <strong>Nome e Cognome: </strong>{{$lead->name}}<br>
+    <strong>Email: </strong>{{$lead->email}}<br>
+    <strong>Messaggio: </strong><br>
     {{$lead->content}}
 </p>

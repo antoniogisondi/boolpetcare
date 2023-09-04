@@ -25,7 +25,7 @@
                         @csrf
                         <div class="class-group">
                             <label class="control-label">Name</label>
-                            <input type="text" id="name" name="name" class="form-control @error('name')is-invalid @enderror" placeholder="Name" value="{{ old('name') ?? $pet->name}}">
+                            <input type="text" id="name" name="name" class="form-control @error('name')is-invalid @enderror" placeholder="Nome" value="{{ old('name') ?? $pet->name}}">
                             @error('name')
                                 <div class="text-danger"> {{ $message }} </div>
                             @enderror
@@ -78,6 +78,18 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group my-4">
+                            <label class="control-label my-2">Malattie:</label>
+                            @foreach($illnesses as $illness)
+                                <div class="form-check">
+                                    <input type="checkbox" name="illnesses[]" value="{{ $illness->id }}" class="form-check-input @error('illness') is-invalid @enderror" {{ $pet->illnesses->contains($illness) ? 'checked' : ''}}>
+                                    <label class="form-check-label">{{ $illness->name }}</label>
+                                </div>
+                            @endforeach
+                            @error('illnesses')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div>
                             <img src="{{ asset('storage/'.$pet->image) }}" width="600px" height="500px">
                         </div>
@@ -90,7 +102,7 @@
                             @enderror
                         </div>
                         <div class="class-group my-3">
-                            <button type="submit" class="btn btn-primary btn-success">Modify</button>
+                            <button type="submit" class="btn btn-primary btn-success">MOdifica</button>
                         </div>
                     </form>
                 </div>
