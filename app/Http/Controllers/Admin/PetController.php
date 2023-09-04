@@ -66,6 +66,8 @@ class PetController extends Controller
             $path = Storage::put('pets-image', $request->image);
             $form_data['image'] = $path;
         }
+        
+        $form_data['slug'] =  $pets->generateSlug($form_data['name']);
 
         $pets->fill($form_data);
 
@@ -117,29 +119,26 @@ class PetController extends Controller
     public function update(UpdatePetRequest $request, Pet $pet)
     {
         $form_data = $request->all();
-
+        
         if($request->hasFile('image')){
             if($pet->image){
                 Storage::delete($pet->image);
             }
-
+            
             $path = Storage::put('pets-image', $request->image);
             $form_data['image'] = $path;
         }
-
+        
+        $form_data['slug'] =  $pet->generateSlug($form_data['name']);
         $pet->update($form_data);
         if($request->has('vaccinations')){
             $pet->vaccinations()->sync($request->vaccinations);
         }
-
-        if($request->has('vaccination')){
-            $pet->vaccination()->sync($request->vaccination);
-        }
-
+        
         if($request->has('illnesses')){
             $pet->illnesses()->sync($request->illnesses);
         }
-
+        
         $message = 'Aggiornamento animale completato';
         return redirect()->route('admin.pets.index', ['message' => $message]);
     }

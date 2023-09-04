@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -15,3 +16,12 @@
         </div>
     </div>
 </div>
+=======
+<h1>Nuova email</h1><br>
+<p>
+    <strong>Nome e Cognome: </strong>{{$lead->name}}<br>
+    <strong>Email: </strong>{{$lead->email}}<br>
+    <strong>Messaggio: </strong><br>
+    {{$lead->content}}
+</p>
+>>>>>>> 753f53faf35b0a64ce89091f871c6bf441a97e94
