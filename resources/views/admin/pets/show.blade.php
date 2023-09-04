@@ -19,11 +19,7 @@
                     <div class="card-body">
                         <strong>Dettagli:</strong>
                         <div class="col-12 my-5">
-                            @if($pet->image != NULL)
-                                <img src="{{ asset('storage/'. $pet->image) }}" width="20%" >
-                            @else
-                                Immagine non disponibile
-                            @endif
+                            <img src="{{ asset('storage/'. $pet->image) }}" width="20%" alt="Immagine non disponibile">
                         </div>
                         <ul>
                             <li><strong>Specie:</strong> {{ $pet->species}}</li>

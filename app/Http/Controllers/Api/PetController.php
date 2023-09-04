@@ -21,12 +21,7 @@ class PetController extends Controller
     }
 
     public function show($slug){
-<<<<<<< HEAD
         $pet = Pet::with('illnesses', 'vaccinations')->where('slug', $slug)->first();
-=======
-
-        $pet = Pet::with('vaccinations', 'illnesses')->where('slug', $slug)->first();
->>>>>>> 753f53faf35b0a64ce89091f871c6bf441a97e94
 
         if($pet){
             
