@@ -91,7 +91,7 @@
                                 @enderror
                             </div>
                         <div class="class-group my-3">
-                            <button type="submit" class="btn btn-primary btn-success">Aggiungi animle</button>
+                            <button type="submit" class="btn btn-primary btn-success">Aggiungi animale</button>
                         </div>
                     </form>
                 </div>
