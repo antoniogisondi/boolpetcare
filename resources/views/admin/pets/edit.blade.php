@@ -102,7 +102,7 @@
                             @enderror
                         </div>
                         <div class="class-group my-3">
-                            <button type="submit" class="btn btn-primary btn-success">Modify</button>
+                            <button type="submit" class="btn btn-primary btn-success">MOdifica</button>
                         </div>
                     </form>
                 </div>
